@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details Form</title>
+
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+
+<form id="userForm" method="post">
+    {% csrf_token%}
+    <label for="userId">User ID:  {{data.id}} </label>
+    <label for="name">Name: {{data.user.first_name}} </label>
+    <label for="email">Email ID: {{data.user.email}} </label>
+
+    <label for="dropdown">Select an option:</label>
+    <select id="role" name="role" required>
+        <option value="" selected disabled>Select an option</option>
+        <option value="Developer">Developer</option>
+        <option value="Tester">Tester</option>
+    </select><br>
+    <button type="submit">Submit</button>
+
+</form>
+
+<!--<script>-->
+<!--    // Autofill when the page loads-->
+<!--    window.onload = function () {-->
+<!--        autofill();-->
+<!--    };-->
+
+
+<!--    function autofill() {-->
+<!--        // Replace these values with the desired autofill data-->
+<!--        document.getElementById('userId').value = {{data.id}};-->
+<!--        document.getElementById('name').value = {{data.user.first_name}};-->
+<!--        document.getElementById('email').value = {{data.user.email}};-->
+<!--    }-->
+
+<!--    // Add your form submission logic here-->
+<!--    document.getElementById('userForm').addEventListener('submit', function () {-->
+<!--        // Replace this with your form submission logic-->
+<!--        alert('Form submitted!');-->
+<!--    });-->
+<!--</script>-->
+    <br><br><br><br><br>
+    <a href="/dashboard/">Back to Dashboard</a>
+
+</body>
+</html>

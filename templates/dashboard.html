@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .role-dropdown,
+        .membership-dropdown {
+            width: 80px;
+        }
+
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+         nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .logout-btn {
+            float: right;
+            display: block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none; /* Added text-decoration */
+        }
+
+        .logout-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/logout/" class="logout-btn">Logout</a>
+    </nav>
+
+    <h2>User Management</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Membership Accept</th>
+                <th>Membership Reject</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Sample Data, replace with actual data from your database -->
+            {% for i in data %}
+            <tr>
+
+                <td>{{i.id}}</td>
+                <td>{{i.user.first_name}}</td>
+                <td>{{i.user.email}}</td>
+
+
+                <td>
+                    <a  class ="btn btn-primary" href="/accept/{{i.id}}">Accept</a>
+
+                </td>
+                <td>
+                    <a  class ="btn btn-primary" href="/reject/{{i.id}}">Reject</a>
+                </td>
+            </tr>
+            {% endfor %}
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+    <script>
+        function submitForm() {
+            var roleDropdowns = document.querySelectorAll('.role-dropdown');
+            var membershipDropdowns = document.querySelectorAll('.membership-dropdown');
+
+            for (var i = 0; i < roleDropdowns.length; i++) {
+                var roleValue = roleDropdowns[i].value;
+                var membershipValue = membershipDropdowns[i].value;
+
+                if (membershipValue === 'accept' && roleValue === '') {
+                    alert('Please choose a role before accepting membership.');
+                    return;
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
