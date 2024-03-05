@@ -14,9 +14,9 @@ Make sure you have Python and Django installed on your machine. If not, you can 
 
 ### Install Django
 pip install django
-Installation
 
-Clone the repository:
+
+##Clone the repository:
 git clone https://github.com/your-username/django-organization-management.git
 
 Change into the project directory:
