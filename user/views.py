@@ -121,7 +121,7 @@ def signUp(request):
                 return HttpResponseRedirect('/login/')
             else:
                 error(request, "Password and Confirm Password not Matched")
-    return render(request,"Signup.html",{"data":d})
+    return render(request,"index.html",{"data":d})
 
 def login(request):
     if(request.method=='POST'):
